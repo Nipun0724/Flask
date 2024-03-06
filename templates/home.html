@@ -1,0 +1,28 @@
+{% extends "header.html"%}
+    {% block content %}
+    {%if deadline%}
+    <p>{{deadline}}</p>
+    {%endif%}
+    <div class="list-group">
+        
+            {% for task in ttasks%}
+            <label class="list-group-item d-flex gap-3">
+                <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+                <span class="pt-1 form-checked-content">
+                  <strong>{{task[1]}}</strong>
+                  <small class="d-block text-body-secondary">
+                    <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"></use></svg>
+                    <time datetime="1914-12-20T08:00">{{task[3]}}</time>  -  <time datetime="1914-12-20T08:00"> {{task[4]}}</time>
+                  </small>
+                </span>
+              </label>
+            {% endfor %}
+        <label class="list-group-item d-flex gap-3 bg-body-tertiary">
+          <form action="#" method="post">
+            <input type="text" name="newtask">
+            <input type="datetime-local" name="deadline">
+            <input type="submit">
+          </form>
+        </label>
+      </div>
+    {% endblock %}
